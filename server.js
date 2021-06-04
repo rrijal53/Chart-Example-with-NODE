@@ -50,10 +50,7 @@ app.get('/', function (req, res) {
 // })
 
 app.get('/chart_data', function (req, res) {
- //get data from db
-    // format data .....
-    //,,,,,
-    //////
+
     client.connect()
     client.query('SELECT country, Count(*)  from users group by country', (err, result) => {
         // var labels = ["2012", "2013", "2014", "2014", "2015"];
