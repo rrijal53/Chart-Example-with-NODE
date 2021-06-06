@@ -6,6 +6,9 @@
 HELLO
 </body>
 <canvas id="bar-chart" width="200" height="100" style="display: block; height: 200px; width: 400px;"></canvas>
+<p id="location-table"></p>
+
+
 <script>
 
     $(document).ready(function () {
@@ -18,7 +21,7 @@ HELLO
                     labels: response.labels,
                     datasets: [
                         {
-                            label: 'Number of Students',
+                            label: 'Number of users by location',
                             backgroundColor: '#4499aa',
                             borderColor: 'green',
                             data: response.data
@@ -31,8 +34,11 @@ HELLO
                     type: 'line',
                     data: chartdata
                 });
-
-
+                var table = $("#location-table")
+                $.each(response.result, function (i, item) {
+                    console.log("ITEM" +  item)
+                    table.append('<tr><td>' + item.country +" " +item.count + '</td></tr>');
+                });
             },
             error: function (error) {
                 console.log(error);

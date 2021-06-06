@@ -2,9 +2,9 @@ const express = require('express');
 const { Client } = require('pg')
 const client = new Client({
         user: 'postgres',
-        host: 'localhost',
+        host: '165.227.121.144',
         database: 'slycc',
-        password: 'password',
+        password: 'slycc@2o2o',
         port: 5432,
     }
 )
@@ -50,24 +50,28 @@ app.get('/', function (req, res) {
 // })
 
 app.get('/chart_data', function (req, res) {
-
+    // var labels = ["2012", "2013", "2014", "2014", "2015"];
+    // var data = [100, 5267, 734, 784, 433]
+    // res.status(200).send({labels: labels, data: data})
     client.connect()
     client.query('SELECT country, Count(*)  from users group by country', (err, result) => {
-        // var labels = ["2012", "2013", "2014", "2014", "2015"];
-        // var data = [100, 5267, 734, 784, 433]
+
         if(err){
             res.status(500).send(err)
             return
         }
         console.log(result.rows)
+        // ["nepal","india", "usa" ]
         var labels =  result.rows.map((item)=>{
             return item.country
         })
+        console.log(labels)
         var data =  result.rows.map((item)=>{
             return Number(item.count)
         })
+        console.log(data)
         console.log(err ? err.stack : result.rows[0].message) // Hello World!
-        res.status(200).send({labels: labels, data: data})
+        res.status(200).send({labels: labels, data: data, result :  result.rows})
     })
 
 })
