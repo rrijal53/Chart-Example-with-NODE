@@ -4,7 +4,6 @@
     <list default="true" id="d73c7f0d-e0a7-48b1-9809-1f0d299b599a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,6 +106,7 @@
       <workItem from="1622339954659" duration="3018000" />
       <workItem from="1622770699963" duration="914000" />
       <workItem from="1622771857659" duration="1318000" />
+      <workItem from="1623374765536" duration="1018000" />
     </task>
     <servers />
   </component>

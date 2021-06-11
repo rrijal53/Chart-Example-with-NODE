@@ -69,9 +69,11 @@ app.get('/chart_data', function (req, res) {
         var data =  result.rows.map((item)=>{
             return Number(item.count)
         })
-        console.log(data)
+       var dataTable = result.rows.map((item)=>{
+           return [item.country, item.count]
+        })
         console.log(err ? err.stack : result.rows[0].message) // Hello World!
-        res.status(200).send({labels: labels, data: data, result :  result.rows})
+        res.status(200).send({labels: labels, data: data, result :  dataTable})
     })
 
 })

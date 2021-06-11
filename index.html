@@ -1,12 +1,14 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"/>
 </head>
 <body>
 HELLO
 </body>
 <canvas id="bar-chart" width="200" height="100" style="display: block; height: 200px; width: 400px;"></canvas>
-<p id="location-table"></p>
+<table id="location-table" class="display"></table>
 
 
 <script>
@@ -34,11 +36,20 @@ HELLO
                     type: 'line',
                     data: chartdata
                 });
-                var table = $("#location-table")
-                $.each(response.result, function (i, item) {
-                    console.log("ITEM" +  item)
-                    table.append('<tr><td>' + item.country +" " +item.count + '</td></tr>');
-                });
+                var table = $("#location-table")  //document.getElementById("location-table')
+                // table.append('<tr><th>COUNTRY<th/>   <th>COUNT</th></tr>');
+                // $.each(response.result, function (i, item) {
+                //     console.log("ITEM " +  JSON.stringify(item) + " " + i)
+                //     table.append('<tr><td>' + item.country +" " +item.count + '</td></tr>');
+                // });
+                $('#location-table').DataTable( {
+                    data: response.result,
+                    columns: [
+                        { title: "Country" },
+                        { title: "Count" },
+                    ]
+                } );
+
             },
             error: function (error) {
                 console.log(error);
