@@ -12,6 +12,7 @@ const client = new Client({
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json())
 
 
 app.listen(3000, function () {
@@ -24,13 +25,14 @@ app.listen(3000, function () {
 //     var obj = req.query;
 //     res.send("hello  " + obj.name)
 // })
-app.get("/project/:id", function (req, res) {
-    var obj = req.params;
-    res.send("ID IS " + obj.id)
-})
+// app.get("/project/:id", function (req, res) {
+//     var obj = req.params;
+//     res.send("ID IS " + obj.id)
+// })
 
 app.post("/project/:id", function (req, res) {
     var obj = req.body;
+
     res.send(obj)
 })
 
@@ -70,8 +72,11 @@ app.get('/chart_data', function (req, res) {
             return Number(item.count)
         })
        var dataTable = result.rows.map((item)=>{
+         // { country: 'Nepal', count: '3' },
+           //[Nepal, 3]
            return [item.country, item.count]
         })
+       // dataTbale = [["nepal", 2] , ["indiia", 4]]
         console.log(err ? err.stack : result.rows[0].message) // Hello World!
         res.status(200).send({labels: labels, data: data, result :  dataTable})
     })
